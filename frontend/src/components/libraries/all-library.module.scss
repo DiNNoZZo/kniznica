@@ -1,0 +1,43 @@
+.list {
+  list-style: none;
+  margin-top: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, 50rem);
+  gap: 1.5rem;
+
+  li {
+    color: var(--gray-800);
+    background-color: var(--gray-200);
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+
+    display: grid;
+    grid-template-columns: 1fr 17rem;
+  }
+
+  .text_area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    & > *:not(:first-child) {
+      margin-top: 0.3rem;
+    }
+  }
+}
+
+.buttons {
+  text-align: center;
+  button {
+    background-color: var(--primary);
+    color: var(--gray-100);
+    font-size: 1.9rem;
+    margin: 1.5rem 0.5rem;
+    width: 100%;
+
+    &:hover {
+      background-color: var(--primary-dark);
+    }
+  }
+}

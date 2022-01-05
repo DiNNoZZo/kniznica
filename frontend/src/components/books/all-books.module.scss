@@ -1,0 +1,40 @@
+.container {
+  ul {
+    list-style: none;
+    margin-top: 1rem;
+
+    display: grid;
+    grid-template-columns: 50rem 50rem;
+    grid-template-rows: auto;
+    gap: 1rem;
+    justify-content: center;
+
+    li {
+      color: var(--gray-800);
+      background-color: var(--gray-200);
+      border-radius: 10px;
+      padding: 2.5rem 2.5rem;
+      max-height: 25rem;
+      width: 100%;
+
+      display: grid;
+      grid-template-columns: 1fr 17rem;
+    }
+
+    .text_area {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      & > *:not(:first-child) {
+        margin-top: 0.3rem;
+      }
+    }
+
+    .buttons {
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

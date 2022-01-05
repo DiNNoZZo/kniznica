@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Helsinki University Library",
+    "books": [
+      {
+        "name": "Duna",
+        "writer": "Frank Herbert",
+        "pages": "496",
+        "img": "default.jpg"
+      },
+      {
+        "name": "The Invisible Life of Addie LaRue",
+        "writer": "V. E. Schwab",
+        "pages": "336",
+        "img": "default.jpg"
+      },
+      {
+        "name": "Phantom",
+        "writer": "Jo Nesbo",
+        "pages": "560",
+        "img": "default.jpg"
+      }
+    ],
+    "students": [
+      {
+        "name": "John Stallone",
+        "email": "johnstalone@gmail.com",
+        "haveBooks": [
+          {
+            "id": "77"
+          },
+          {
+            "id": "78"
+          },
+          {
+            "id": "79"
+          }
+        ]
+      },
+      {
+        "name": "Elizz Mallca",
+        "email": "elizzmallca@gmail.com",
+        "haveBooks": []
+      }
+    ]
+  }
+]

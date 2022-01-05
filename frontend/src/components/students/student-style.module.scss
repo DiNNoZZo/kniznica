@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+}
+
+article {
+  text-align: unset;
+
+  .text_area {
+    padding-left: 3rem;
+    padding-top: 0.5rem;
+  }
+}

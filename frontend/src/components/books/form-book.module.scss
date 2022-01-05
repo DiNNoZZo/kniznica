@@ -1,0 +1,14 @@
+.form {
+  & > *:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  button {
+    &:first-child {
+      margin-right: 0.5rem;
+    }
+    &:last-child {
+      margin-left: 0.5rem;
+    }
+  }
+}

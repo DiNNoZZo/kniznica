@@ -1,0 +1,20 @@
+.lib_nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--gray-transp-10);
+
+  display: flex;
+  justify-content: space-between;
+
+  .buttons {
+    & :not(:last-child) {
+      margin-right: 1rem;
+    }
+    & :not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+}
