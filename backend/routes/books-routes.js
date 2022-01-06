@@ -15,7 +15,7 @@ router
   .patch(booksController.updateBook);
 
 router
-  .route('/reader')
+  .route('/:bookId/:studentId')
   .post(booksController.addReader)
   .delete(booksController.returnBook);
 

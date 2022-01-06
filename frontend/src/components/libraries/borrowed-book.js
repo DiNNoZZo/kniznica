@@ -28,15 +28,13 @@ function BorrowedBook({ booksProps, studentsProps }) {
     const returnTime = e.target[2].value;
 
     const bodyPost = {
-      student: student.id,
-      book: book.id,
       maxDays: returnTime,
       active: true,
     };
 
     try {
       await sendRequest({
-        url: `${domain}/api/books/reader`,
+        url: `${domain}/api/books/${book.id}/${student.id}`,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: bodyPost,

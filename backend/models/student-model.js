@@ -31,6 +31,10 @@ const studentSchema = new mongoose.Schema(
         default: false,
       },
     },
+    active: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -52,6 +56,12 @@ studentSchema.pre(/^find/, function (next) {
       select: 'writer name pages -reader -library',
     },
   });
+
+  next();
+});
+
+studentSchema.pre(/^find/, function (next) {
+  this.find({ active: true });
 
   next();
 });

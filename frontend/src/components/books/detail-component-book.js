@@ -17,30 +17,23 @@ const domain = process.env.REACT_APP_DOMAIN;
 function DetailComponentBook() {
   const params = useParams();
   const navigate = useNavigate();
-  const [refresh, setRefresh] = useState(false);
   const [student, setStudent] = useState(null);
   const [book, setBook] = useState(null);
   const [history, setHistory] = useState(null);
 
   const returnBook = async () => {
-    //not working yet
-    const sendBody = {
-      student: params.id,
-      book: book.id,
-    };
-
     const data = await sendRequest({
-      url: `${domain}/api/books/reader`,
+      url: `${domain}/api/books/${book.id}/${student.id}`,
       method: 'DELETE',
-      Headers: { 'Content-Type': 'application/json' },
-      body: sendBody,
     });
+
+    console.log(data);
 
     if (data.status === 'fail') {
       //set popup window with error..
     }
 
-    setRefresh(!refresh);
+    setStudent(null);
   };
 
   const deleteItem = async () => {

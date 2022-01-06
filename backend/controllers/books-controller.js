@@ -56,7 +56,8 @@ exports.deleteBook = catchAsync(async (req, res, next) => {
     return next(err);
   }
 
-  const book = await Book.findByIdAndRemove(req.params.id);
+  //delete book (just change visibility)
+  const book = await Book.findByIdAndUpdate(req.params.id, { active: false });
 
   if (!book) {
     return next(new HttpError('No book found with that ID', 404));
@@ -67,11 +68,11 @@ exports.deleteBook = catchAsync(async (req, res, next) => {
 
 exports.addReader = catchAsync(async (req, res, next) => {
   const book = await Book.findOneAndUpdate(
-    { _id: req.body.book },
+    { _id: req.params.bookId },
     {
       $set: {
         reader: {
-          student: req.body.student,
+          student: req.params.studentId,
           maxDays: req.body.maxDays,
           active: true,
         },
@@ -83,10 +84,10 @@ exports.addReader = catchAsync(async (req, res, next) => {
   await History.create(req.body);
 
   const student = await Student.findOneAndUpdate(
-    { _id: req.body.student },
+    { _id: req.params.studentId },
     {
       $set: {
-        reading: { book: req.body.book, active: true },
+        reading: { book: req.params.bookId, active: true },
       },
     }
   );
@@ -101,16 +102,15 @@ exports.addReader = catchAsync(async (req, res, next) => {
 });
 
 exports.returnBook = catchAsync(async (req, res, next) => {
-  console.log(req.body);
-  const book = await Book.findById(
-    { _id: req.body.book },
+  const book = await Book.findByIdAndUpdate(
+    { _id: req.params.bookId },
     {
-      $set: { reader: { ative: false } },
+      $set: { reader: { active: false } },
     }
   );
 
   const student = await Student.findOneAndUpdate(
-    { _id: req.body.student },
+    { _id: req.params.studentId },
     {
       $set: { reading: { active: false } },
     }

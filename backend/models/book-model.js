@@ -33,6 +33,10 @@ const bookSchema = new mongoose.Schema(
         default: false,
       },
     },
+    active: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -54,6 +58,12 @@ bookSchema.pre(/^find/, function (next) {
 
   next();
 });
+
+// bookSchema.pre(/^find/, function (next) {
+//   this.find({ active: true });
+
+//   next();
+// });
 
 const Book = mongoose.model('Book', bookSchema);
 

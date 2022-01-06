@@ -51,7 +51,10 @@ exports.deleteStudent = catchAsync(async (req, res, next) => {
     return next(new HttpError("I can't delete a student who has a book.", 500));
   }
 
-  const student = await Student.findByIdAndRemove(req.params.id);
+  //delete student (just change visibility)
+  const student = await Student.findByIdAndUpdate(req.params.id, {
+    active: false,
+  });
 
   if (!student) {
     return next(new HttpError('No student found with that ID', 404));

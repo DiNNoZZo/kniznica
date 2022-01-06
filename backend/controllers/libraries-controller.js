@@ -1,6 +1,6 @@
 const Libraries = require('../models/library-model');
-const catchAsync = require('../utils/catch-async');
 const HttpError = require('../utils/http-error');
+const catchAsync = require('../utils/catch-async');
 
 exports.getAllLibraries = catchAsync(async (req, res, next) => {
   const allLibraries = await Libraries.find().populate('books students');
@@ -54,7 +54,10 @@ exports.updateLibrary = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteLibrary = catchAsync(async (req, res, next) => {
-  const library = await Libraries.findByIdAndRemove(req.params.id);
+  //delete library (just change visibility)
+  const library = await Libraries.findByIdAndUpdate(req.params.id, {
+    active: false,
+  });
 
   if (!library) {
     return next(new HttpError('No library found with that ID', 404));

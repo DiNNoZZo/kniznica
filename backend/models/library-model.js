@@ -9,6 +9,10 @@ const librarySchema = new mongoose.Schema(
       trim: true,
       minlength: [2, 'Library name must be more or equal than 2 characters.'],
     },
+    active: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -27,6 +31,12 @@ librarySchema.virtual('books', {
   ref: 'Book',
   foreignField: 'library',
   localField: '_id',
+});
+
+librarySchema.pre(/^find/, function (next) {
+  this.find({ active: true });
+
+  next();
 });
 
 const Library = mongoose.model('Library', librarySchema);

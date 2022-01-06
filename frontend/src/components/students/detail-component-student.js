@@ -23,23 +23,16 @@ function DetailComponentStudent() {
   const [history, setHistory] = useState(null);
 
   const returnBook = async () => {
-    const sendBody = {
-      student: params.id,
-      book: book.id,
-    };
-
-    console.log(sendBody);
-
     const data = await sendRequest({
-      url: `${domain}/api/books/reader`,
+      url: `${domain}/api/books/${book.id}/${student.id}`,
       method: 'DELETE',
-      Headers: { 'Content-Type': 'application/json' },
-      body: sendBody,
     });
 
     if (data.status === 'fail') {
       //show error
     }
+
+    setBook(null);
   };
 
   const deleteItem = async () => {
